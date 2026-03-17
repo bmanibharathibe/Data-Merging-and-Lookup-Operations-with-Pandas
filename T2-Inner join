@@ -1,0 +1,4 @@
+inner_join = pd.merge(students_cleaned, enrollments, on='student_id', how='inner')
+print("\nInner Join:")
+print(inner_join)
+print("Row count:", len(inner_join))
