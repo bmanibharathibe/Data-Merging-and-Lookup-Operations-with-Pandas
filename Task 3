@@ -1,0 +1,55 @@
+import pandas as pd
+
+# Sample DataFrames (use your existing ones if already created)
+students_cleaned = pd.DataFrame({
+    'student_id': [101, 102, 104, 105, 106, 107],
+    'name': ['Alice', 'Bob', 'David', 'Emma', 'Frank', 'Grace']
+})
+
+scores = pd.DataFrame({
+    'student_id': [101, 102, 104, 105, 106],
+    'exam_score': [85, 92, 78, 88, 95]
+})
+
+
+# 1. Lookup using map()
+
+score_dict = dict(zip(scores['student_id'], scores['exam_score']))
+students_cleaned['exam_score'] = students_cleaned['student_id'].map(score_dict)
+
+print("=== Lookup using map() ===")
+print(students_cleaned)
+
+
+# 2. Using merge()
+
+merge_result = pd.merge(students_cleaned.drop(columns=['exam_score']), 
+                       scores, on='student_id', how='left')
+
+print("\n=== Using merge() ===")
+print(merge_result)
+
+
+# 3. Automation Function
+
+def auto_merge(df1, df2, join_type, key_column):
+    merged_df = pd.merge(df1, df2, on=key_column, how=join_type)
+    return {
+        'result_df': merged_df,
+        'row_count': len(merged_df),
+        'join_type': join_type
+    }
+
+
+# 4. Function Testing
+
+test_inner = auto_merge(students_cleaned, scores, 'inner', 'student_id')
+test_left = auto_merge(students_cleaned, scores, 'left', 'student_id')
+
+print("\n=== Auto Merge Test: Inner Join ===")
+print("Rows:", test_inner['row_count'])
+print(test_inner['result_df'])
+
+print("\n=== Auto Merge Test: Left Join ===")
+print("Rows:", test_left['row_count'])
+print(test_left['result_df'])
