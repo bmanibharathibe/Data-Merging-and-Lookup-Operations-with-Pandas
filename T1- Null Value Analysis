@@ -1,0 +1,5 @@
+print("\nNull Value Analysis:")
+for col in students.columns:
+    null_count = students[col].isnull().sum()
+    percent = (null_count / len(students)) * 100
+    print(f"{col}: {null_count} ({percent:.2f}%)")
