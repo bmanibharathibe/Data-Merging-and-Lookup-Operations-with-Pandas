@@ -1,0 +1,28 @@
+import pandas as pd
+
+# Students DataFrame
+students_data = {
+    'student_id': [101, 102, 103, 104, 105, 106, 107],
+    'name': ['Alice', 'Bob', None, 'David', 'Emma', 'Frank', 'Grace'],
+    'email': ['alice@email.com', 'bob@email.com', 'charlie@email.com', None, 'emma@email.com', 'frank@email.com', 'grace@email.com'],
+    'city': ['Mumbai', 'Delhi', 'Bangalore', 'Mumbai', None, 'Chennai', 'Delhi']
+}
+students = pd.DataFrame(students_data)
+
+# Enrollments DataFrame
+enrollments_data = {
+    'student_id': [101, 102, 103, 105, 108, 109],
+    'course_name': ['Python', 'Data Science', 'Python', 'Machine Learning', 'AI', 'Python'],
+    'enrollment_date': ['2024-01-15', '2024-01-20', '2024-02-01', '2024-02-10', '2024-02-15', '2024-03-01']
+}
+enrollments = pd.DataFrame(enrollments_data)
+
+# Scores DataFrame
+scores_data = {
+    'student_id': [101, 102, 104, 105, 106],
+    'exam_score': [85, 92, 78, 88, 95]
+}
+scores = pd.DataFrame(scores_data)
+
+print("Original Students DataFrame:")
+print(students)
