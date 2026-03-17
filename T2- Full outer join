@@ -12,3 +12,17 @@ print("Row count:", len(outer_join))
 print(outer_join[
     (outer_join['name'].isnull()) | (outer_join['course_name'].isnull())
 ])
+
+
+
+
+#Merge indicator
+
+
+outer_with_indicator = pd.merge(
+    students_cleaned, enrollments,
+    on='student_id', how='outer', indicator=True
+)
+
+print("\nMerge Indicator Distribution:")
+print(outer_with_indicator['_merge'].value_counts())
