@@ -1,0 +1,4 @@
+left_join = pd.merge(students_cleaned, enrollments, on='student_id', how='left')
+print("\nLeft Join:")
+print(left_join)
+print("Row count:", len(left_join))
