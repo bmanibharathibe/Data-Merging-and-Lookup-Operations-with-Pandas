@@ -1,0 +1,4 @@
+outer_join = pd.merge(students_cleaned, enrollments, on='student_id', how='outer')
+print("\nOuter Join:")
+print(outer_join)
+print("Row count:", len(outer_join))
