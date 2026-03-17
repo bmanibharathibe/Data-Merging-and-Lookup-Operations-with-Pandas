@@ -1,0 +1,8 @@
+# Fill missing city
+students['city'].fillna('Unknown', inplace=True)
+
+# Drop rows where name is missing
+students_cleaned = students.dropna(subset=['name'])
+
+print("\nCleaned Students DataFrame:")
+print(students_cleaned)
